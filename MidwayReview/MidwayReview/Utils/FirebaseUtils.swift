@@ -8,8 +8,36 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 class FirebaseUtils {
+    static func logout() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("Couldn't sign out")
+        }
+        
+    }
+    
+    static func login(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) {user, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+    
+    static func signup(email:String, password:String) {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+    
     static func loadAllDocuments(completion: @escaping ([Document]?) -> Void) {
         let dbRef = Database.database().reference()
         dbRef.child("Documents").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -18,14 +46,16 @@ class FirebaseUtils {
             for child in snapshot.children {
                 let docDict = (child as! DataSnapshot).value as! NSDictionary
                 
-                let id = docDict.value(forKey: "id") as! String
-                let title = docDict.value(forKey: "title") as! String
-                let body = docDict.value(forKey: "body") as! String
-                let timestamp = docDict.value(forKey: "timestamp") as! Double
-                
-                let document = Document(withId: id, titled: title, body: body, createdOn: Date(timeIntervalSince1970: timestamp))
-                
-                documents.append(document)
+                if let owner = docDict.value(forKey: "owner") as? String, owner == DocumentManager.sharedInstance.uuid {
+                    let id = docDict.value(forKey: "id") as! String
+                    let title = docDict.value(forKey: "title") as! String
+                    let body = docDict.value(forKey: "body") as! String
+                    let timestamp = docDict.value(forKey: "timestamp") as! Double
+                    
+                    let document = Document(withId: id, titled: title, body: body, createdOn: Date(timeIntervalSince1970: timestamp))
+                    
+                    documents.append(document)
+                }
             }
             completion(documents)
         }) { (error) in

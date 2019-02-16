@@ -32,7 +32,7 @@ class DocumentTableViewCell: UITableViewCell {
     }
     
     private func setUpDescription() {
-        descriptionLabel = UILabel(frame: CGRect(x: 10, y: self.titleLabel!.bounds.maxY+10, width: self.contentView.bounds.width, height: 75))
+        descriptionLabel = UILabel(frame: CGRect(x: 10, y: self.titleLabel!.bounds.maxY+10, width: self.contentView.bounds.width, height: 60))
         
         descriptionLabel?.textColor = UIColor.gray
         descriptionLabel?.font = UIFont.systemFont(ofSize: 14)

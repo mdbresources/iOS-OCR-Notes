@@ -13,12 +13,14 @@ class Document {
     var title: String
     var body: String
     var timestamp: Date
+    var owner: String
     
     init(withTitle title:String, body: String, createdOn timestamp: Date) {
         self.id = UUID().uuidString
         self.title = title
         self.body = body
         self.timestamp = timestamp
+        self.owner = DocumentManager.sharedInstance.uuid!
     }
     
     init(withId id:String, titled title:String, body:String, createdOn timestamp: Date) {
@@ -26,6 +28,7 @@ class Document {
         self.title = title
         self.body = body
         self.timestamp = timestamp
+        self.owner = DocumentManager.sharedInstance.uuid!
     }
     
     func update(title: String, body: String) {
@@ -40,6 +43,6 @@ class Document {
     }
     
     func toDict() -> [AnyHashable: Any] {
-        return ["id":id, "title":title, "body":body, "timestamp":timestamp.timeIntervalSince1970]
+        return ["owner": owner, "id":id, "title":title, "body":body, "timestamp":timestamp.timeIntervalSince1970]
     }
 }

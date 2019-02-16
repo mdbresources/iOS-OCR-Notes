@@ -17,7 +17,21 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.setUpTableView()
-        loadDocs()
+        self.setUpNavBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if let _ = DocumentManager.sharedInstance.uuid {
+            if DocumentManager.sharedInstance.documents.count == 0 {
+                loadDocs()
+            } else {
+                self.tableView.reloadData()
+            }
+        } else {
+            self.performSegue(withIdentifier: "toLogin", sender: self)
+        }
     }
     
     func loadDocs() {
@@ -30,9 +44,15 @@ class FeedViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.tableView.reloadData()
+    @objc func signout() {
+        UserDefaults.standard.set(nil, forKey: "uid")
+        FirebaseUtils.logout()
+        self.performSegue(withIdentifier: "toLogin", sender: self)
+    }
+    
+    private func setUpNavBar() {
+        self.navigationItem.setLeftBarButton(UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signout)), animated: true)
+        self.navigationItem.title = "Notes"
     }
     
     private func setUpTableView() {

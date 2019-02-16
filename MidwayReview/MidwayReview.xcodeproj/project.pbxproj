@@ -21,6 +21,7 @@
 		1F04CEF42217763900C92DB3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04CEF32217763900C92DB3 /* Document.swift */; };
 		1F5C617522177E3300B1864E /* PicVC-Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C617422177E3300B1864E /* PicVC-Views.swift */; };
 		1F6F8A6C2217D36300B52E5F /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F8A6B2217D36300B52E5F /* DocumentViewController.swift */; };
+		1F6F8A6E2217DE7900B52E5F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F8A6D2217DE7900B52E5F /* LoginViewController.swift */; };
 		1FC0BF18221790530083CAC2 /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FC0BF17221790530083CAC2 /* TesseractOCR.framework */; };
 		1FC0BF1A221791620083CAC2 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FC0BF19221791620083CAC2 /* CoreImage.framework */; };
 		1FC0BF1D221791850083CAC2 /* UIImage-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0BF1C221791850083CAC2 /* UIImage-Ext.swift */; };
@@ -46,6 +47,7 @@
 		1F04CEF32217763900C92DB3 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		1F5C617422177E3300B1864E /* PicVC-Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PicVC-Views.swift"; sourceTree = "<group>"; };
 		1F6F8A6B2217D36300B52E5F /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		1F6F8A6D2217DE7900B52E5F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1FC0BF17221790530083CAC2 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC0BF19221791620083CAC2 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		1FC0BF1C221791850083CAC2 /* UIImage-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Ext.swift"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				1F04CEEE221762BE00C92DB3 /* FeedVC */,
 				1F04CEF522177BB200C92DB3 /* PicVC */,
 				1F6F8A6B2217D36300B52E5F /* DocumentViewController.swift */,
+				1F6F8A6D2217DE7900B52E5F /* LoginViewController.swift */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MidwayReview/Pods-MidwayReview-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -265,6 +269,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -311,6 +316,7 @@
 				1F04CEED2217627F00C92DB3 /* FeedVC-TableView.swift in Sources */,
 				1F6F8A6C2217D36300B52E5F /* DocumentViewController.swift in Sources */,
 				1F04CED62217615100C92DB3 /* AppDelegate.swift in Sources */,
+				1F6F8A6E2217DE7900B52E5F /* LoginViewController.swift in Sources */,
 				1FC0BF1D221791850083CAC2 /* UIImage-Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,9 +12,14 @@ class DocumentManager {
     static var sharedInstance: DocumentManager = DocumentManager()
     
     var documents: [Document]
+    var uuid: String?
     
     private init() {
         documents = []
+        
+        if let storedId = UserDefaults.standard.string(forKey: "uid") {
+            uuid = storedId
+        }
     }
     
     func addDocument(_ doc: Document, completion: (() -> Void)?) {

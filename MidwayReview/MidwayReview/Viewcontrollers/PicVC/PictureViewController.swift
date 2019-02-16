@@ -33,8 +33,8 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
-        //imagePicker.sourceType = .camera
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = .camera
+        //imagePicker.sourceType = .photoLibrary
         
         activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         self.view.addSubview(activityIndicator)
