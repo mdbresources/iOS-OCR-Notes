@@ -1,0 +1,6 @@
+framework module Pods_MidwayReview {
+  umbrella header "Pods-MidwayReview-umbrella.h"
+
+  export *
+  module * { export * }
+}
