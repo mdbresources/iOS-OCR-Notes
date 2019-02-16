@@ -10,10 +10,22 @@ import Foundation
 import UIKit
 
 extension PictureViewController {
+    func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.center = self.docText.center
+        activityIndicator.color = Colors.orangeAccent
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+    }
+    
     func setUpDocImage() {
         let frame = CGRect(x: self.view.frame.width / 2 - 150, y: 50, width: 300, height: 300)
         docImage = UIImageView(frame: frame)
-        docImage.backgroundColor = .black
+        docImage.image = UIImage(named: "Picture")
+        
+        //docImage.backgroundColor = Colors.secondaryDark
+        docImage.backgroundColor = .clear
+        docImage.tintColor = Colors.orangeAccent
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(takeImage))
         docImage.addGestureRecognizer(imageTap)
@@ -26,8 +38,9 @@ extension PictureViewController {
         let frame = CGRect(x: 25, y: self.docImage.frame.maxY + 20, width: self.view.frame.width - 50, height: 50)
         docTitle = UITextField(frame: frame)
         self.docTitle.delegate = self
+        self.docTitle.placeholder = "Please enter a title"
         
-        self.docTitle.backgroundColor = .red
+        self.docTitle.backgroundColor = .white
         
         self.view.addSubview(docTitle)
     }
@@ -37,7 +50,7 @@ extension PictureViewController {
         docText = UITextView(frame: frame)
         self.docText.delegate = self
         
-        self.docText.backgroundColor = .blue
+        self.docText.backgroundColor = .white
         
         self.view.addSubview(docText)
     }
@@ -48,7 +61,7 @@ extension PictureViewController {
         addButton.setTitle("Add", for: .normal)
         addButton.addTarget(self, action: #selector(createDocument), for: .touchUpInside)
         
-        self.addButton.backgroundColor = .purple
+        self.addButton.backgroundColor = Colors.orangeAccent
         
         self.view.addSubview(addButton)
     }
@@ -66,7 +79,7 @@ extension PictureViewController {
     }
     
     func reset() {
-        self.docImage.image = nil
+        self.docImage.image = UIImage(named: "Picture")
         self.docText.text = ""
         self.docTitle.text = nil
         self.toggleInteraction(to: false)

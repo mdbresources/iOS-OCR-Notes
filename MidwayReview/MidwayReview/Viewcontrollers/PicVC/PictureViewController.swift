@@ -28,16 +28,16 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         setUpDocTitle()
         setUpDocText()
         setUpAddButton()
+        setupImagePicker()
+        setupActivityIndicator()
         
         self.toggleInteraction(to: false)
-        
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        //imagePicker.sourceType = .photoLibrary
-        
-        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
-        self.view.addSubview(activityIndicator)
+        self.view.backgroundColor = Colors.primaryDark
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.reset()
     }
     
     func readImage() {
@@ -57,20 +57,26 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     }
     
     @objc func createDocument() {
-        guard let title = self.docTitle.text else {
+        guard var title = self.docTitle.text else {
             self.showError(titled: "Error", withMessage: "Please enter a title")
             return
+        }
+        
+        if title == "" {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/yyyy HH:mm"
+            title = formatter.string(from: Date())
         }
         
         let text = docText.text
         
         let newDoc = Document.init(withTitle: title, body: text!, createdOn: Date())
         
-        DocumentManager.sharedInstance.addDocument(newDoc, completion: nil)
-        
-        self.reset()
-        
-        self.tabBarController?.selectedIndex = 0
+        DocumentManager.sharedInstance.addDocument(newDoc, completion: {
+            DispatchQueue.main.async {
+                self.tabBarController?.selectedIndex = 0
+            }
+        })
     }
     
     @objc func takeImage() {

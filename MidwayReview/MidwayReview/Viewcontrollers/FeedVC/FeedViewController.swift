@@ -26,12 +26,12 @@ class FeedViewController: UIViewController {
         if let _ = DocumentManager.sharedInstance.uuid {
             if DocumentManager.sharedInstance.documents.count == 0 {
                 loadDocs()
-            } else {
-                self.tableView.reloadData()
             }
         } else {
             self.performSegue(withIdentifier: "toLogin", sender: self)
         }
+        
+        self.tableView.reloadData()
     }
     
     func loadDocs() {
@@ -51,8 +51,14 @@ class FeedViewController: UIViewController {
     }
     
     private func setUpNavBar() {
+        self.navigationController?.navigationBar.tintColor = Colors.orangeAccent
+        self.navigationController?.navigationBar.barTintColor = Colors.primaryDark
+        
         self.navigationItem.setLeftBarButton(UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signout)), animated: true)
         self.navigationItem.title = "Notes"
+        
+        let textAttributes = [NSAttributedString.Key.foregroundColor:Colors.orangeAccent]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     private func setUpTableView() {
