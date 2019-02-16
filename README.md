@@ -68,4 +68,8 @@ DatabaseManager is what is known as a Singleton. That means it can only be insta
 The ```.camera``` source type doesn't work on UIImagePickerController in the simulator. To test the app in the simulator, comment out ```imagePicker.sourceType = .camera``` and replace it with ```imagePicker.sourceType = .photoLibrary``` in PicVC-ImagePicker.swift.
 
 # I don't have a physical device to test this on
-OCR still works even when selecting images from the image library. You can download images using the Simulator's Safari app. They will then be accessible in the Photo Library.
+OCR still works even when selecting images from the image library. You can download images using the Simulator's Safari app. They will then be accessible in the Photo Library. Here are some documents you can try.
+
+- https://business.tutsplus.com/tutorials/how-to-ocr-documents-for-free-in-google-drive--cms-20460
+- https://thevisualcommunicationguy.com/2016/03/23/make-your-boring-documents-look-professional-in-5-easy-steps/
+- 
