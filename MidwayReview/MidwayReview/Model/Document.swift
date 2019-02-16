@@ -32,10 +32,7 @@ class Document {
     }
     
     func update(title: String, body: String) {
-        self.title = title
-        self.body = body
-        
-        FirebaseUtils.updateDocument(self, completion: nil)
+        // TODO
     }
     
     func summary() -> String {

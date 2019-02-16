@@ -23,7 +23,6 @@ extension PictureViewController {
         docImageView = UIImageView(frame: frame)
         docImageView.image = UIImage(named: "Picture")
         
-        //docImage.backgroundColor = Colors.secondaryDark
         docImageView.backgroundColor = .clear
         docImageView.tintColor = Colors.orangeAccent
         
@@ -59,7 +58,8 @@ extension PictureViewController {
         let frame = CGRect(x: self.view.frame.width / 2 - 50, y: self.docTextView.frame.maxY + 50, width: 100, height: 50)
         addButton = UIButton(frame: frame)
         addButton.setTitle("Add", for: .normal)
-        addButton.addTarget(self, action: #selector(createDocument), for: .touchUpInside)
+        
+        // TODO
         
         self.addButton.backgroundColor = Colors.orangeAccent
         
@@ -67,9 +67,7 @@ extension PictureViewController {
     }
     
     func toggleInteraction(to enabled: Bool) {
-        self.docTitleField.isUserInteractionEnabled = enabled
-        self.docTextView.isUserInteractionEnabled = enabled
-        self.addButton.isUserInteractionEnabled = enabled
+        // TODO Enable/Disable user interaction for specific fields
     }
     
     func showError(titled title: String, withMessage message: String) {
@@ -79,9 +77,6 @@ extension PictureViewController {
     }
     
     func reset() {
-        self.docImageView.image = UIImage(named: "Picture")
-        self.docTextView.text = ""
-        self.docTitleField.text = nil
-        self.toggleInteraction(to: false)
+        // TODO Reset the view
     }
 }

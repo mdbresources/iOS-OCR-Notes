@@ -6,8 +6,4 @@ target 'MidwayReview' do
   use_frameworks!
   # Pods for MidwayReview
   pod 'TesseractOCRiOS'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-
 end

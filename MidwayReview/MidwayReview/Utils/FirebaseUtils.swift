@@ -7,89 +7,30 @@
 //
 
 import Foundation
-import FirebaseDatabase
-import FirebaseAuth
 
 class FirebaseUtils {
     static func logout() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print("Couldn't sign out")
-        }
+        // TODO
         
     }
     
     static func login(email: String, password: String, completion: @escaping (Error?) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) {user, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            completion(error)
-        }
+        // TODO
     }
     
     static func signup(email:String, password:String, completion: @escaping (Error?) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            completion(error)
-        }
+        // TODO
     }
     
     static func loadAllDocuments(completion: @escaping ([Document]?) -> Void) {
-        let dbRef = Database.database().reference()
-        dbRef.child("Documents").observeSingleEvent(of: .value, with: { (snapshot) in
-            var documents:[Document] = []
-            
-            for child in snapshot.children {
-                let docDict = (child as! DataSnapshot).value as! NSDictionary
-                
-                if let owner = docDict.value(forKey: "owner") as? String, owner == DocumentManager.sharedInstance.uuid {
-                    let id = docDict.value(forKey: "id") as! String
-                    let title = docDict.value(forKey: "title") as! String
-                    let body = docDict.value(forKey: "body") as! String
-                    let timestamp = docDict.value(forKey: "timestamp") as! Double
-                    
-                    let document = Document(withId: id, titled: title, body: body, createdOn: Date(timeIntervalSince1970: timestamp))
-                    
-                    documents.append(document)
-                }
-            }
-            completion(documents)
-        }) { (error) in
-            print(error.localizedDescription)
-            completion(nil)
-        }
+        // TODO
     }
     
     static func addDocument(_ doc: Document, completion: @escaping (()  -> Void)) {
-        let dbRef = Database.database().reference()
-        let newChild = dbRef.child("Documents").childByAutoId()
-        doc.id = newChild.key!
-        
-        newChild.updateChildValues(doc.toDict()) { (error, ref) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            completion()
-        }
+        // TODO
     }
     
     static func updateDocument(_ doc: Document, completion: (()  -> Void)?) {
-        let dbRef = Database.database().reference()
-        dbRef.child("Documents").child(doc.id).updateChildValues(doc.toDict()) { (error, ref) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("Updated \(doc.id)")
-            }
-            
-            completion?()
-        }
+        // TODO
     }
 }

@@ -14,22 +14,15 @@ extension PictureViewController: UIImagePickerControllerDelegate, UINavigationCo
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
-        //imagePicker.sourceType = .photoLibrary
+        //imagePicker.sourceType = .photoLibrary // Uncomment this when running on the simulator
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.activityIndicator.stopAnimating()
-        self.docImageView.image = UIImage(named: "Picture")
+        // TODO
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        
-        self.docImageView.image = info[.originalImage] as? UIImage
-        self.activityIndicator.startAnimating()
-        
-        imagePicker.dismiss(animated: true, completion: {
-            self.readImage()
-        })
+        // TODO
     }
 }

@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import FirebaseDatabase
 
 class FeedViewController: UIViewController {
-    private var tableView: UITableView!
-    var selectedDoc: Document!
+    // TODO
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,53 +21,30 @@ class FeedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if let _ = DocumentManager.sharedInstance.uuid {
-            if DocumentManager.sharedInstance.documents.count == 0 {
-                loadDocs()
-            }
-        } else {
-            self.performSegue(withIdentifier: "toLogin", sender: self)
-        }
+        // TODO
         
-        self.tableView.reloadData()
     }
     
     func loadDocs() {
-        FirebaseUtils.loadAllDocuments { (documents) in
-            guard let documents = documents else { return }
-            for doc in documents {
-                DocumentManager.sharedInstance.documents.append(doc)
-            }
-            self.tableView.reloadData()
-        }
+        // TODO
     }
     
     @objc func signout() {
-        UserDefaults.standard.set(nil, forKey: "uid")
-        FirebaseUtils.logout()
-        self.performSegue(withIdentifier: "toLogin", sender: self)
+        // TODO
     }
     
     private func setUpNavBar() {
         self.navigationController?.navigationBar.tintColor = Colors.orangeAccent
         self.navigationController?.navigationBar.barTintColor = Colors.primaryDark
         
-        self.navigationItem.setLeftBarButton(UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signout)), animated: true)
-        self.navigationItem.title = "Notes"
-        
         let textAttributes = [NSAttributedString.Key.foregroundColor:Colors.orangeAccent]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        // TODO Add Signout button to the navbar and set its title
     }
     
     private func setUpTableView() {
-        self.tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        self.tableView.register(DocumentTableViewCell.self, forCellReuseIdentifier: "DocumentCell")
-        
-        self.view.addSubview(self.tableView)
+        // TODO
     }
 }
 

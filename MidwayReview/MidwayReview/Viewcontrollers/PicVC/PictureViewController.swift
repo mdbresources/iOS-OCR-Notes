@@ -31,13 +31,15 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         setupImagePicker()
         setupActivityIndicator()
         
-        self.toggleInteraction(to: false)
         self.view.backgroundColor = Colors.primaryDark
+        
+        //TODO
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.reset()
+        
+        //TODO
     }
     
     func readImage() {
@@ -52,31 +54,11 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             self.docTextView.text = tesseract.recognizedText
         }
         
-        activityIndicator.stopAnimating()
-        self.toggleInteraction(to: true)
+        // TODO
     }
     
     @objc func createDocument() {
-        guard var title = self.docTitleField.text else {
-            self.showError(titled: "Error", withMessage: "Please enter a title")
-            return
-        }
-        
-        if title == "" {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MM/dd/yyyy HH:mm"
-            title = formatter.string(from: Date())
-        }
-        
-        let text = docTextView.text
-        
-        let newDoc = Document.init(withTitle: title, body: text!, createdOn: Date())
-        
-        DocumentManager.sharedInstance.addDocument(newDoc, completion: {
-            DispatchQueue.main.async {
-                self.tabBarController?.selectedIndex = 0
-            }
-        })
+        // TODO Create a document with the data in the fields
     }
     
     @objc func takeImage() {

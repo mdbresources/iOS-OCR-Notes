@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     var loginButton: UIButton!
@@ -16,7 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var emailField: UITextField!
     var passField: UITextField!
     
-    var handle: AuthStateDidChangeListenerHandle?
+    //TODO Add any instance variables you think you might need
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,46 +33,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let user = user {
-                DocumentManager.sharedInstance.uuid = user.uid
-                UserDefaults.standard.set(user.uid, forKey: "uid")
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
+        //TODO
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        
+        //TODO
     }
     
     @objc func checkAuthorization(sender: UIButton) {
-        if let email = emailField.text, let password = passField.text, password != "", email.contains("@") {
-            if sender == loginButton {
-                FirebaseUtils.login(email: email, password: password, completion: {
-                    error in
-                    
-                    if error != nil {
-                        DispatchQueue.main.async {
-                            self.showError(titled: "Error", withMessage: "Something went wrong while logging in. Please try again")
-                        }
-                    }
-                })
-            } else {
-                FirebaseUtils.signup(email: email, password: password, completion: {
-                    error in
-                    
-                    if error != nil {
-                        DispatchQueue.main.async {
-                            self.showError(titled: "Error", withMessage: "Something went wrong while creating an account. Please try again")
-                        }
-                    }
-                })
-            }
-        } else {
-            showError(titled: "Error", withMessage: "Please enter a valid email and password")
-        }
+        //TODO: Authenticate with Firebase appropriately depending on which button is the sender. Be sure to check your inputs
+  
     }
     
     func showError(titled title:String, withMessage message:String) {

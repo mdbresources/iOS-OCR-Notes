@@ -14,16 +14,12 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UITextFieldD
     var titleTextField: UITextField!
     var bodyTextView: UITextView!
     
-    var titleString: String!
-    var bodyText: String!
+    //TODO Add any instance variables you think you might need
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.title = "Notes"
-        
-        titleString = document.title
-        bodyText = document.body
         
         setUpTitleField()
         setUpBody()
@@ -31,23 +27,20 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        document.update(title: titleString, body: bodyText)
+        
+        //TODO
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
-        if textField == self.titleTextField {
-            titleString = self.titleTextField.text
-        }
+    
+        //TODO Do something when the user is done changing the title
         
         return true
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        if textView == bodyTextView {
-            bodyText = bodyTextView.text
-        }
+        //TODO Do something when the user is done editing the document body
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {

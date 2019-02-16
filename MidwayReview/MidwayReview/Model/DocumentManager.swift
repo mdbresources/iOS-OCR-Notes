@@ -23,10 +23,6 @@ class DocumentManager {
     }
     
     func addDocument(_ doc: Document, completion: (() -> Void)?) {
-        FirebaseUtils.addDocument(doc, completion: {
-            self.documents.append(doc)
-            
-            completion?()
-        })
+        // TODO
     }
 }

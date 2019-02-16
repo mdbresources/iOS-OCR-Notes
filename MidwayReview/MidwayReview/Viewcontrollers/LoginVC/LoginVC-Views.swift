@@ -50,7 +50,7 @@ extension LoginViewController {
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = Colors.orangeAccent
         
-        loginButton.addTarget(self, action: #selector(checkAuthorization), for: .touchUpInside)
+        //TODO
         
         self.view.addSubview(self.loginButton)
     }
@@ -63,7 +63,7 @@ extension LoginViewController {
         signupButton.setTitle("Create Account", for: .normal)
         signupButton.backgroundColor = Colors.orangeAccent
         
-        signupButton.addTarget(self, action: #selector(checkAuthorization), for: .touchUpInside)
+        //TODO
         
         self.view.addSubview(self.signupButton)
     }
