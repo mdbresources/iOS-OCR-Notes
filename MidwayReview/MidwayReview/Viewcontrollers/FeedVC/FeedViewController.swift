@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class FeedViewController: UIViewController {
     private var tableView: UITableView!
+    var selectedDoc: Document!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.setUpTableView()
+        loadDocs()
+    }
+    
+    func loadDocs() {
+        FirebaseUtils.loadAllDocuments { (documents) in
+            guard let documents = documents else { return }
+            for doc in documents {
+                DocumentManager.sharedInstance.documents.append(doc)
+            }
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

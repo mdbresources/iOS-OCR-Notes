@@ -33,8 +33,8 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        //imagePicker.sourceType = .photoLibrary
+        //imagePicker.sourceType = .camera
+        imagePicker.sourceType = .photoLibrary
         
         activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         self.view.addSubview(activityIndicator)
@@ -65,7 +65,8 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         let text = docText.text
         
         let newDoc = Document.init(withTitle: title, body: text!, createdOn: Date())
-        MyDocuments.sharedInstance.documents.append(newDoc)
+        
+        DocumentManager.sharedInstance.addDocument(newDoc, completion: nil)
         
         self.reset()
         

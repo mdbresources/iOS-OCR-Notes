@@ -8,16 +8,6 @@
 
 import Foundation
 
-class MyDocuments {
-    static var sharedInstance: MyDocuments = MyDocuments()
-    
-    var documents: [Document]
-    
-    private init() {
-        documents = []
-    }
-}
-
 class Document {
     var id: String
     var title: String
@@ -31,7 +21,25 @@ class Document {
         self.timestamp = timestamp
     }
     
+    init(withId id:String, titled title:String, body:String, createdOn timestamp: Date) {
+        self.id = id
+        self.title = title
+        self.body = body
+        self.timestamp = timestamp
+    }
+    
+    func update(title: String, body: String) {
+        self.title = title
+        self.body = body
+        
+        FirebaseUtils.updateDocument(self, completion: nil)
+    }
+    
     func summary() -> String {
-        return String(body.prefix(40))
+        return String(body.prefix(100))
+    }
+    
+    func toDict() -> [AnyHashable: Any] {
+        return ["id":id, "title":title, "body":body, "timestamp":timestamp.timeIntervalSince1970]
     }
 }
