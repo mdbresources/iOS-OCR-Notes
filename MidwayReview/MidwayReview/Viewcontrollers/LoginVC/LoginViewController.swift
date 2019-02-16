@@ -56,9 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     if error != nil {
                         DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Error", message: "Something went wrong while logging in. Please try again", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                            self.present(alertView, animated: true, completion: nil)
+                            self.showError(titled: "Error", withMessage: "Something went wrong while logging in. Please try again")
                         }
                     }
                 })
@@ -68,18 +66,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     if error != nil {
                         DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Error", message: "Something went wrong while creating an account. Please try again", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                            self.present(alertView, animated: true, completion: nil)
+                            self.showError(titled: "Error", withMessage: "Something went wrong while creating an account. Please try again")
                         }
                     }
                 })
             }
         } else {
-            let alertView = UIAlertController(title: "Error", message: "Please enter a valid email and password", preferredStyle: .alert)
-            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            self.present(alertView, animated: true, completion: nil)
+            showError(titled: "Error", withMessage: "Please enter a valid email and password")
         }
+    }
+    
+    func showError(titled title:String, withMessage message:String) {
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

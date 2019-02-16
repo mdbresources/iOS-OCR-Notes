@@ -12,7 +12,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UITextFieldD
     var document: Document!
     
     var titleTextField: UITextField!
-    var bodyView: UITextView!
+    var bodyTextView: UITextView!
     
     var titleString: String!
     var bodyText: String!
@@ -45,8 +45,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UITextFieldD
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        if textView == bodyView {
-            bodyText = bodyView.text
+        if textView == bodyTextView {
+            bodyText = bodyTextView.text
         }
     }
     
@@ -67,12 +67,12 @@ extension DocumentViewController {
     }
     
     func setUpBody() {
-        bodyView = UITextView(frame: CGRect(x: 10, y: self.titleTextField.frame.maxY + 10, width: self.view.frame.width-20, height: self.view.frame.height - 100))
-        bodyView.delegate = self
+        bodyTextView = UITextView(frame: CGRect(x: 10, y: self.titleTextField.frame.maxY + 10, width: self.view.frame.width-20, height: self.view.frame.height - 100))
+        bodyTextView.delegate = self
         
-        bodyView.font = UIFont.systemFont(ofSize: 16)
-        bodyView.text = document.body
+        bodyTextView.font = UIFont.systemFont(ofSize: 16)
+        bodyTextView.text = document.body
         
-        self.view.addSubview(bodyView)
+        self.view.addSubview(bodyTextView)
     }
 }

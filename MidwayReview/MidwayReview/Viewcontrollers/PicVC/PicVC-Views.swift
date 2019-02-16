@@ -12,7 +12,7 @@ import UIKit
 extension PictureViewController {
     func setupActivityIndicator() {
         activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
-        activityIndicator.center = self.docText.center
+        activityIndicator.center = self.docTextView.center
         activityIndicator.color = Colors.orangeAccent
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
@@ -20,43 +20,43 @@ extension PictureViewController {
     
     func setUpDocImage() {
         let frame = CGRect(x: self.view.frame.width / 2 - 150, y: 50, width: 300, height: 300)
-        docImage = UIImageView(frame: frame)
-        docImage.image = UIImage(named: "Picture")
+        docImageView = UIImageView(frame: frame)
+        docImageView.image = UIImage(named: "Picture")
         
         //docImage.backgroundColor = Colors.secondaryDark
-        docImage.backgroundColor = .clear
-        docImage.tintColor = Colors.orangeAccent
+        docImageView.backgroundColor = .clear
+        docImageView.tintColor = Colors.orangeAccent
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(takeImage))
-        docImage.addGestureRecognizer(imageTap)
-        docImage.isUserInteractionEnabled = true
+        docImageView.addGestureRecognizer(imageTap)
+        docImageView.isUserInteractionEnabled = true
         
-        self.view.addSubview(docImage)
+        self.view.addSubview(docImageView)
     }
     
     func setUpDocTitle() {
-        let frame = CGRect(x: 25, y: self.docImage.frame.maxY + 20, width: self.view.frame.width - 50, height: 50)
-        docTitle = UITextField(frame: frame)
-        self.docTitle.delegate = self
-        self.docTitle.placeholder = "Please enter a title"
+        let frame = CGRect(x: 25, y: self.docImageView.frame.maxY + 20, width: self.view.frame.width - 50, height: 50)
+        docTitleField = UITextField(frame: frame)
+        self.docTitleField.delegate = self
+        self.docTitleField.placeholder = "Please enter a title"
         
-        self.docTitle.backgroundColor = .white
+        self.docTitleField.backgroundColor = .white
         
-        self.view.addSubview(docTitle)
+        self.view.addSubview(docTitleField)
     }
     
     func setUpDocText() {
-        let frame = CGRect(x: 25, y: self.docTitle.frame.maxY+10, width: self.view.frame.width-50, height: 150)
-        docText = UITextView(frame: frame)
-        self.docText.delegate = self
+        let frame = CGRect(x: 25, y: self.docTitleField.frame.maxY+10, width: self.view.frame.width-50, height: 150)
+        docTextView = UITextView(frame: frame)
+        self.docTextView.delegate = self
         
-        self.docText.backgroundColor = .white
+        self.docTextView.backgroundColor = .white
         
-        self.view.addSubview(docText)
+        self.view.addSubview(docTextView)
     }
     
     func setUpAddButton() {
-        let frame = CGRect(x: self.view.frame.width / 2 - 50, y: self.docText.frame.maxY + 50, width: 100, height: 50)
+        let frame = CGRect(x: self.view.frame.width / 2 - 50, y: self.docTextView.frame.maxY + 50, width: 100, height: 50)
         addButton = UIButton(frame: frame)
         addButton.setTitle("Add", for: .normal)
         addButton.addTarget(self, action: #selector(createDocument), for: .touchUpInside)
@@ -67,8 +67,8 @@ extension PictureViewController {
     }
     
     func toggleInteraction(to enabled: Bool) {
-        self.docTitle.isUserInteractionEnabled = enabled
-        self.docText.isUserInteractionEnabled = enabled
+        self.docTitleField.isUserInteractionEnabled = enabled
+        self.docTextView.isUserInteractionEnabled = enabled
         self.addButton.isUserInteractionEnabled = enabled
     }
     
@@ -79,9 +79,9 @@ extension PictureViewController {
     }
     
     func reset() {
-        self.docImage.image = UIImage(named: "Picture")
-        self.docText.text = ""
-        self.docTitle.text = nil
+        self.docImageView.image = UIImage(named: "Picture")
+        self.docTextView.text = ""
+        self.docTitleField.text = nil
         self.toggleInteraction(to: false)
     }
 }

@@ -10,10 +10,10 @@ import UIKit
 import TesseractOCR
 
 class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-    var docImage: UIImageView!
+    var docImageView: UIImageView!
     
-    var docText: UITextView!
-    var docTitle: UITextField!
+    var docTextView: UITextView!
+    var docTitleField: UITextField!
     
     var addButton: UIButton!
     
@@ -41,7 +41,7 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     }
     
     func readImage() {
-        guard let image = docImage.image else { return }
+        guard let image = docImageView.image else { return }
         guard let scaledImage = image.scaleImage(640) else { return }
         
         if let tesseract = G8Tesseract(language: "eng") {
@@ -49,7 +49,7 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             tesseract.pageSegmentationMode = .auto
             tesseract.image = scaledImage.g8_blackAndWhite()
             tesseract.recognize()
-            self.docText.text = tesseract.recognizedText
+            self.docTextView.text = tesseract.recognizedText
         }
         
         activityIndicator.stopAnimating()
@@ -57,7 +57,7 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     }
     
     @objc func createDocument() {
-        guard var title = self.docTitle.text else {
+        guard var title = self.docTitleField.text else {
             self.showError(titled: "Error", withMessage: "Please enter a title")
             return
         }
@@ -68,7 +68,7 @@ class PictureViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             title = formatter.string(from: Date())
         }
         
-        let text = docText.text
+        let text = docTextView.text
         
         let newDoc = Document.init(withTitle: title, body: text!, createdOn: Date())
         
