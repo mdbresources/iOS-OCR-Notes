@@ -20,21 +20,23 @@ class FirebaseUtils {
         
     }
     
-    static func login(email: String, password: String) {
+    static func login(email: String, password: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {user, error in
             if let error = error {
                 print(error.localizedDescription)
-                return
             }
+            
+            completion(error)
         }
     }
     
-    static func signup(email:String, password:String) {
+    static func signup(email:String, password:String, completion: @escaping (Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
-                return
             }
+            
+            completion(error)
         }
     }
     

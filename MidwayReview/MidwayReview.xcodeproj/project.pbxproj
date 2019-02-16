@@ -20,6 +20,7 @@
 		1F04CEF12217724A00C92DB3 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04CEF02217724A00C92DB3 /* DocumentTableViewCell.swift */; };
 		1F04CEF42217763900C92DB3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04CEF32217763900C92DB3 /* Document.swift */; };
 		1F53221A2217F08300C3A341 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5322192217F08300C3A341 /* Constants.swift */; };
+		1F53221D2217FD9B00C3A341 /* LoginVC-Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53221C2217FD9B00C3A341 /* LoginVC-Views.swift */; };
 		1F5C617522177E3300B1864E /* PicVC-Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C617422177E3300B1864E /* PicVC-Views.swift */; };
 		1F6F8A6C2217D36300B52E5F /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F8A6B2217D36300B52E5F /* DocumentViewController.swift */; };
 		1F6F8A6E2217DE7900B52E5F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F8A6D2217DE7900B52E5F /* LoginViewController.swift */; };
@@ -47,6 +48,7 @@
 		1F04CEF02217724A00C92DB3 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		1F04CEF32217763900C92DB3 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		1F5322192217F08300C3A341 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1F53221C2217FD9B00C3A341 /* LoginVC-Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC-Views.swift"; sourceTree = "<group>"; };
 		1F5C617422177E3300B1864E /* PicVC-Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PicVC-Views.swift"; sourceTree = "<group>"; };
 		1F6F8A6B2217D36300B52E5F /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		1F6F8A6D2217DE7900B52E5F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +118,7 @@
 				1F04CEEE221762BE00C92DB3 /* FeedVC */,
 				1F04CEF522177BB200C92DB3 /* PicVC */,
 				1F6F8A6B2217D36300B52E5F /* DocumentViewController.swift */,
-				1F6F8A6D2217DE7900B52E5F /* LoginViewController.swift */,
+				1F53221B2217FD8600C3A341 /* LoginVC */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -155,6 +157,15 @@
 				1FFFAB7D22177F3300163FBF /* PicVC-ImagePicker.swift */,
 			);
 			path = PicVC;
+			sourceTree = "<group>";
+		};
+		1F53221B2217FD8600C3A341 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				1F6F8A6D2217DE7900B52E5F /* LoginViewController.swift */,
+				1F53221C2217FD9B00C3A341 /* LoginVC-Views.swift */,
+			);
+			path = LoginVC;
 			sourceTree = "<group>";
 		};
 		1FC0BF1B2217916C0083CAC2 /* Utils */ = {
@@ -310,6 +321,7 @@
 			files = (
 				1F5C617522177E3300B1864E /* PicVC-Views.swift in Sources */,
 				1F04CEDA2217615100C92DB3 /* PictureViewController.swift in Sources */,
+				1F53221D2217FD9B00C3A341 /* LoginVC-Views.swift in Sources */,
 				1F04CEF12217724A00C92DB3 /* DocumentTableViewCell.swift in Sources */,
 				1F04CEF42217763900C92DB3 /* Document.swift in Sources */,
 				1F02E0022217BC2B0067B54A /* DocumentManager.swift in Sources */,
